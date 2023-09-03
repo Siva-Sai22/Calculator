@@ -7,7 +7,7 @@ expression='';
 const expression_div = document.querySelector('.expression');
 
 const performOperation = (exp) => {
-    expression='';
+    expression+=' =';
 }
 
 const updateExpression = (a) => {
