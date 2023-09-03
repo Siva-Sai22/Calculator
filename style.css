@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
@@ -13,19 +15,30 @@ body {
     width: 386px;
     height: 520px;
     margin: 0px auto;
+    font-size: 32px;
+    background-color: #5C5470;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    font-size: 32px;
-    background-color: #5C5470;
 }
 
-.area {
+.ans {
     height: 128px;
     width: 344px;
     background-color: #B9B4C7;
+    text-align: right;
+    padding: 8px 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.answer {
+    font-size: 48px;
 }
 
 button {
@@ -33,6 +46,7 @@ button {
     font-size: 24px;
     padding: 16px 32px;
     background-color: #FAF0E6;
+    border-radius: 8px;
 }
 
 .function {
