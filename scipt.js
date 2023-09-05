@@ -44,22 +44,31 @@ const performOperation = () => {
             i=0;
         }
     }
-    answer_div.textContent=ans;
+    if(ans=Infinity){
+        answer_div.textContent='ERROR';
+    }else{
+        answer_div.textContent=ans;
+    }
 }
 
 const updateExpression = (a) => {
     let check = a==='+' || a==='x' || a==='-' || a==='÷';
+
     if(equal_active && a!== '='){
         if(a<='9' && a>='0'){
             expression='';
         }else if(check){
             expression = `${answer_div.textContent}`;
+        }else if(a==='.'){
+            expression='0';
         }
         equal_active=false;
     }
+
     if(a === 'Clear') {
         expression='';
         answer_div.textContent='0';
+        equal_active=false;
     }else if(a === 'Delete') {
         expression = expression.slice(0,expression.length-1);
     }else if(a === '=') {
@@ -76,7 +85,13 @@ const updateExpression = (a) => {
         }
     }else if(a<='9' && a>='0'){
         expression+=a;
+    }else if(a === '.'){
+        if(!(expression[expression.length-1]>='0' && expression[expression.length-1]<='9')){
+            expression+='0';
+        }
+        expression+=a;
     }
+
     expression_div.textContent=expression;
 }
 
