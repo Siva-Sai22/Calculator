@@ -61,3 +61,15 @@ button {
     display: flex;
     justify-content: space-between;
 }
+
+.clear {
+    background-color: rgb(172, 171, 171);
+}
+
+.delete {
+    background-color: rgb(253, 101, 101);
+}
+
+.equalto{
+    background-color: lightgreen;
+}
