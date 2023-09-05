@@ -4,6 +4,7 @@ const multiply = (a,b)=>a*b;
 const divide = (a,b)=>a/b;
 
 let expression='';
+let equal_active=false;
 const expression_div = document.querySelector('.expression');
 const answer_div = document.querySelector('.answer');
 
@@ -48,13 +49,24 @@ const performOperation = () => {
 
 const updateExpression = (a) => {
     let check = a==='+' || a==='x' || a==='-' || a==='÷';
+    if(equal_active && a!== '='){
+        if(a<='9' && a>='0'){
+            expression='';
+        }else if(check){
+            expression = `${answer_div.textContent}`;
+        }
+        equal_active=false;
+    }
     if(a === 'Clear') {
         expression='';
         answer_div.textContent='0';
     }else if(a === 'Delete') {
         expression = expression.slice(0,expression.length-1);
     }else if(a === '=') {
-        performOperation();
+        if(expression[expression.length-1]!='='){
+            performOperation();
+            equal_active=true;
+        }
     }else if(check && expression !== '') {
         if(expression[expression.length-1]==='+' || expression[expression.length-1]==='x' || expression[expression.length-1]==='-' || expression[expression.length-1]==='÷'){
             expression = expression.slice(0,expression.length-1);
