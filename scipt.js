@@ -14,16 +14,18 @@ const performOperation = () => {
     let ans=0;
     let i=0;
     while(i<eval.length){
-        let a=0,b=0;
-        while(eval[i]<='9' && eval[i]>='0'){
-            a=a*10+parseInt(eval[i]);
+        let a='',b='';
+        while((eval[i]<='9' && eval[i]>='0') || eval[i]=='.'){
+            a=a+eval[i];
             i++;
         }
+        a=parseFloat(a);
         let op=eval[i++];
-        while(eval[i]<='9' && eval[i]>='0'){
-            b=b*10+parseInt(eval[i]);
+        while((eval[i]<='9' && eval[i]>='0') || eval[i]=='.'){
+            b=b+eval[i];
             i++;
         }
+        b=parseFloat(b);
         switch(op){
             case '+':
                 ans=add(a,b);
