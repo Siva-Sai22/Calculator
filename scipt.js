@@ -46,7 +46,19 @@ const performOperation = () => {
             i=0;
         }
     }
-    if(!Number.isInteger(ans)) ans = ans.toFixed(6);
+    if(!Number.isInteger(ans)){
+        let an = ans.toString();
+        let i=an.length-1,count=0;
+        while(i>=0){
+            if(an[i]!='.'){
+                count++;
+                i--;
+            }else{
+                break;
+            }
+        }
+        if(count>6) ans = ans.toFixed(6);
+    } 
     answer_div.textContent=ans;
 }
 
