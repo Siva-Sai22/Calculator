@@ -44,11 +44,7 @@ const performOperation = () => {
             i=0;
         }
     }
-    if(ans=Infinity){
-        answer_div.textContent='ERROR';
-    }else{
-        answer_div.textContent=ans;
-    }
+    answer_div.textContent=ans;
 }
 
 const updateExpression = (a) => {
@@ -86,10 +82,25 @@ const updateExpression = (a) => {
     }else if(a<='9' && a>='0'){
         expression+=a;
     }else if(a === '.'){
-        if(!(expression[expression.length-1]>='0' && expression[expression.length-1]<='9')){
-            expression+='0';
+        let dot=false;
+        let exp_check=expression;
+        let i=exp_check.length;
+        while(i>=0 ){
+            if(exp_check[i]=='.'){
+                dot=true;
+                break;
+            }
+            if((exp_check[i]==='+' || exp_check[i]==='x' || exp_check[i]==='-' || exp_check[i]==='÷') && !dot){
+                break;
+            }
+            i--;
         }
-        expression+=a;
+        if(!dot){
+            if(!(expression[expression.length-1]>='0' && expression[expression.length-1]<='9')){
+                expression+='0';
+            }
+            expression+=a;
+        }
     }
 
     expression_div.textContent=expression;
