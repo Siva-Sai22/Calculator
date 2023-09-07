@@ -46,6 +46,7 @@ const performOperation = () => {
             i=0;
         }
     }
+    if(!Number.isInteger(ans)) ans = ans.toFixed(6);
     answer_div.textContent=ans;
 }
 
@@ -113,4 +114,18 @@ buttons.forEach((button) => {
     button.addEventListener('click', (e) =>{
         updateExpression(button.textContent);
     });
+});
+
+window.addEventListener('keydown',(e)=>{
+    let key = e.key;
+    if(key==='/'){
+        key='÷';
+    }else if(key==='Enter'){
+        key='=';
+    }else if(key==='Backspace'){
+        key='Delete';
+    }else if(key==='*'){
+        key='x';
+    }
+    updateExpression(key);
 });
